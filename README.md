@@ -1,30 +1,63 @@
-# React + TypeScript + Vite
+# ADIMIS Intern Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sign In / Sign Up users with supabase as backend .
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Run Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Clone the project
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+  https://github.com/Moriarity-2k/SignIn-SignUp---supabase---ReactFormix.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Go to the project directory
+
+```bash
+  cd SignIn-SignUp---supabase---ReactFormix
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`VITE_SUPABASE_KEY`
+
+`VITE_SUPABASE_URL`
+
+`VITE_SUPABASE_IMAGE_URL` = returned after image upload to the supabase bucket
+
+
+## Tech Stack
+
+**Client:** React, ReactFormix, TailwindCSS , Typescript
+
+**Server:** supabase
+
+
+## 🛠 Skills
+ReactJs, Typescript, Supabase, ReactFormix, ReactHookForms
+
+## screenshots 
+
+#### mobile view 
+
+![4_A](https://github.com/Moriarity-2k/SignIn-SignUp---supabase---ReactFormix/assets/143058936/451bddf6-a5ab-465f-bd5a-0df910f4a0a7)
+![2_A](https://github.com/Moriarity-2k/SignIn-SignUp---supabase---ReactFormix/assets/143058936/84a2a453-b5ee-422d-bae7-bd71e7a8937e)
+
+#### Desktop view
+![3_A](https://github.com/Moriarity-2k/SignIn-SignUp---supabase---ReactFormix/assets/143058936/c11f976c-adf9-4755-8362-40030b20a682)
+![1_A](https://github.com/Moriarity-2k/SignIn-SignUp---supabase---ReactFormix/assets/143058936/215b7816-806e-489f-9cf1-8c06f6362a1f)
