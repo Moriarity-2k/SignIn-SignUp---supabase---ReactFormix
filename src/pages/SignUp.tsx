@@ -25,7 +25,6 @@ import {
 } from "../components/ui/select";
 import { Registration } from "@/lib/SupabaseValidations";
 import toast from "react-hot-toast";
-// import { useEffect, useState } from "react";
 
 // Interface representing the data structure of the sign-up form
 export interface SignUp {
@@ -43,16 +42,6 @@ export interface SignUp {
 }
 
 export default function SignUp() {
-	// 	const [defValues, setDefVales] = useState<SignUp>();
-	// 	useEffect(() => {
-	// 		const localData = localStorage.getItem("FORMDATA");
-	//
-	// 		if (localData !== null && localData !== undefined) {
-	// 			const x = JSON.parse(localData);
-	// 			setDefVales(x);
-	// 			console.log(x);
-	// 		}
-	// 	}, []);
 
 	const schemaFormProps: ISchemaFormProps<SignUp> = {
 		formLabel: "ReactFormix Form Submission Demo",
@@ -298,7 +287,7 @@ export default function SignUp() {
 						localStorage.getItem("adimis-schema-form-FORMDATA") !==
 							null
 					)
-						return;
+						return true;
 
 					if (files.length === undefined) return false;
 
