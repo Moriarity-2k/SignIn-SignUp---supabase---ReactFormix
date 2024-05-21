@@ -24,6 +24,7 @@ import {
 	SelectValue,
 } from "../components/ui/select";
 import { Registration } from "@/lib/SupabaseValidations";
+// import { useEffect, useState } from "react";
 
 // Interface representing the data structure of the sign-up form
 export interface SignUp {
@@ -33,20 +34,30 @@ export interface SignUp {
 	phone: string;
 	password: string;
 	gender: string;
-	terms: boolean;
-	// terms: string;
 	file: FileList;
 	date: Date;
-	// year: string;
 	year: string;
 	expertise: string;
+	terms: boolean;
 }
 
 export default function SignUp() {
+	// 	const [defValues, setDefVales] = useState<SignUp>();
+	// 	useEffect(() => {
+	// 		const localData = localStorage.getItem("FORMDATA");
+	//
+	// 		if (localData !== null && localData !== undefined) {
+	// 			const x = JSON.parse(localData);
+	// 			setDefVales(x);
+	// 			console.log(x);
+	// 		}
+	// 	}, []);
+
 	const schemaFormProps: ISchemaFormProps<SignUp> = {
 		formLabel: "ReactFormix Form Submission Demo",
-		formSlug: "example-barebone-form",
-		// persistFormResponse: "localStorage",
+		formSlug: "FORMDATA",
+		persistFormResponse: "localStorage",
+		// persistFormResponse: defValues,
 		devTools: true,
 		formDisabled: false,
 		enableConditionalRendering: true,
@@ -59,8 +70,8 @@ export default function SignUp() {
 				description: "Enter your desired username.",
 				autoComplete: "username",
 				type: "text",
-				placeholder: "Your username",
-				defaultValue: "",
+				// placeholder: "Your username",
+				// defaultValue : 'surya',
 				validations: z
 					.string()
 					.min(1, "Username is required")
@@ -83,6 +94,7 @@ export default function SignUp() {
 							padding: "16px",
 							margin: "5px 0",
 						}}
+						className="dark:text-white"
 						{...formMethods.register(formItem.key)}
 					/>
 				),
@@ -387,8 +399,9 @@ export default function SignUp() {
 				// autoComplete: "male",
 				type: "string",
 				placeholder: "Enter comma seperated values",
-				defaultValue: "",
+				// defaultValue: "",
 				// validations: z.array(),
+				validations: z.string(),
 				render: ({
 					formDisabled,
 					formItem,
@@ -439,7 +452,10 @@ export default function SignUp() {
 				),
 			},
 		],
-		defaultValues: {},
+		// defaultValues: {
+		//     username : 'us'
+		//
+		// },
 		onSubmit: Registration,
 		onInvalidSubmit: (values) => {
 			console.log(
@@ -454,7 +470,7 @@ export default function SignUp() {
 		<ThemeProvider defaultTheme="light">
 			<FormixFormProvider {...schemaFormProps}>
 				<FormBody>
-					<FormHeader className="flex w-[80%] max-sm:w-full mx-auto">
+					<FormHeader className="dark:text-black lex w-[80%] max-sm:w-full mx-auto">
 						<FormTitle className=" leading-8 uppercase tracking-widest" />
 						<FormDescription />
 					</FormHeader>
