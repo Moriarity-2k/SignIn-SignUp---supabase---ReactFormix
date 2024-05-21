@@ -292,8 +292,13 @@ export default function SignUp() {
 				// placeholder: "",
 				// defaultValue: "",
 				validations: z.any().refine((files) => {
-                    
-                    if(localStorage.getItem('adimis-schema-form-FORMDATA') != '') return;
+					if (
+						localStorage.getItem("adimis-schema-form-FORMDATA") !==
+							"" ||
+						localStorage.getItem("adimis-schema-form-FORMDATA") !==
+							null
+					)
+						return;
 
 					if (files.length === undefined) return false;
 
