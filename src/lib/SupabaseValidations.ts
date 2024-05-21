@@ -23,7 +23,7 @@ export async function signUpNewUser(email: string, password: string) {
 			toast.error("Server Error !!! Try again later");
 	}
 
-	console.log(data);
+	// console.log(data);
 
 	return data;
 }
@@ -116,7 +116,7 @@ export async function ImageUploader(file: File) {
 		return;
 	}
 
-	console.log(data);
+	// console.log(data);
 
 	return data;
 }
@@ -197,41 +197,43 @@ export const Registration = async (registerValues: SignUp) => {
 			toast.success("Password update successfull !!!");
 			return;
 		}
-		// update other values if changed
-		else {
-			values.password = "";
+		/**
+		 * update other values
+		 * since the password is already updated and don't want to store in the table
+		 */
+		values.password = "";
 
-			// but users shouldn't change the email : comprimise security
-			if (authSess.data.session.user.email !== values.email) {
-				toast.error("cannot change email !!!");
-				return;
-			}
-			const userEmail = values.email;
-			// doesn't work because of TYPESCRIPT DECL : optional Type
-			// delete values.email;
-
-			const { error } = await supabase
-				.from("Users")
-				.update(values)
-				.eq("email", userEmail)
-				.select();
-
-			if (error) {
-				console.log(error);
-				toast.error(
-					"Sorry data update not successfull !!! Try again later"
-				);
-				return;
-			}
-
-            localStorage.setItem(
-                "adimis-schema-form-FORMDATA",
-                JSON.stringify(values)
-            );
-
-			toast.success("User data update successfull !!!");
+		// but users shouldn't change the email : comprimise security
+		if (authSess.data.session.user.email !== values.email) {
+			toast.error("cannot change email !!!");
 			return;
 		}
+		const userEmail = values.email;
+		// delete values.email;
+		// delete doesn't work because of TYPESCRIPT DECL : optional Type
+
+		const { error } = await supabase
+			.from("Users")
+			.update(values)
+			.eq("email", userEmail)
+			.select();
+
+		if (error) {
+			console.log(error);
+			toast.error(
+				"Sorry data update not successfull !!! Try again later"
+			);
+			return;
+		}
+
+		localStorage.setItem(
+			"adimis-schema-form-FORMDATA",
+			JSON.stringify(values)
+		);
+
+		toast.success("User data update successfull !!!");
+		return;
+		// }
 	}
 
 	// If not authorised sign up the users

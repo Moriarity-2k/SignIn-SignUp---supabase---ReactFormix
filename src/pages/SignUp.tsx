@@ -24,6 +24,7 @@ import {
 	SelectValue,
 } from "../components/ui/select";
 import { Registration } from "@/lib/SupabaseValidations";
+import toast from "react-hot-toast";
 // import { useEffect, useState } from "react";
 
 // Interface representing the data structure of the sign-up form
@@ -291,6 +292,9 @@ export default function SignUp() {
 				// placeholder: "",
 				// defaultValue: "",
 				validations: z.any().refine((files) => {
+                    
+                    if(localStorage.getItem('adimis-schema-form-FORMDATA') != '') return;
+
 					if (files.length === undefined) return false;
 
 					return files?.length !== 0;
@@ -457,12 +461,13 @@ export default function SignUp() {
 		//
 		// },
 		onSubmit: Registration,
-		onInvalidSubmit: (values) => {
-			console.log(
-				"On Submit Invalid Example Form Response: ",
-				JSON.stringify(values, null, 4)
-			);
-			console.log(values);
+		onInvalidSubmit: () => {
+			// console.log(
+			// 	"On Submit Invalid Example Form Response: ",
+			// 	JSON.stringify(values, null, 4)
+			// );
+			// console.log(values);
+			toast.error("Please provide all the values !!!");
 		},
 	};
 

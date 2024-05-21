@@ -5,10 +5,12 @@ import { Button } from "./components/ui/button";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-	const [logIn, setLogIn] = useState<boolean>(true);
+	const [logIn, setLogIn] = useState<boolean>(false);
 
 	return (
 		<>
+			<div className="bg-orange-300 h-8 w-8"></div>
+
 			<Toaster
 				position="top-center"
 				reverseOrder={false}
